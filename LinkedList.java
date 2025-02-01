@@ -14,7 +14,7 @@ public class LinkedList {
     Node head = null;
     Node tail = null;
 
-    public void addNode(int data) {
+    public void insertEnd(int data) {
         Node newNode = new Node(data);
         if (head == null) {
             head = newNode;
@@ -22,18 +22,6 @@ public class LinkedList {
         } else {
             tail.next = newNode;
             tail = newNode;
-        }
-    }
-
-    public void insertEnd(int data) {
-        Node newNode = new Node(data);
-
-        if (head == null) { 
-            head = newNode; 
-            tail = newNode; 
-        } else {
-            tail.next = newNode; 
-            tail = newNode; 
         }
     }
 
@@ -56,7 +44,7 @@ public class LinkedList {
         while (sc.hasNext()) {
             if (sc.hasNextInt()) {
                 data = sc.nextInt();
-                list.addNode(data);
+                list.insertEnd(data);
             } else {
                 String temp = sc.next();
                 System.out.println("LINKED LIST CREATED");
@@ -69,12 +57,15 @@ public class LinkedList {
                     list.insertEnd(data1); 
                 } else {
                     System.out.println("Enter integers only");
-                    System.exit(0);
+                    break; // Exit gracefully
                 }
 
                 System.out.println("LINKED LIST AFTER INSERTING");
                 list.displayList();
+                break; // Exit gracefully after insertion
             }
         }
+
+        sc.close(); // Close the scanner
     }
 }
